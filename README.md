@@ -46,6 +46,7 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
 - The module containing the Annotation Processor shall be named _Reverie Conceiver_
 - The module containing the Annotations (require, Required, StrictMode) used by the Annotaion Processor shall be named _Dreamer_
 - The module containing the Damas-Hindley-Milner type signatures shall be named _Milner Types_
+
 Dependencies shall be as followed:
 - [x] The module _Reverie Conceiver_ is dependent on _Milner Types_
 - [x] The module _Milner Types_ is transitive dependent on _Algebraic Data Structures_
