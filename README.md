@@ -3,7 +3,8 @@
 This project aims to order the mess of the Data-Structures-Project of mine, and outsource the FP part.
 
 ## Objective:
-- [ ] Comprehensive fp Library contining various algebraic data structures
+- [ ] Exhaustive Library containing various functional interfaces types (Tri-/Bi-/Function, etc.)
+- [ ] Comprehensive fp Library containing various algebraic data structures
 - [ ] Complete implementation of the FantasyLand Specification using Interfaces/Annotations
   - [ ] Setoid
   - [ ] Ord
@@ -38,12 +39,19 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
   - [ ] Verifier
 
 ## Module Dependency & Naming
-- The Module containing algebraic data structures shall be named _Algebraic Data Structures_
-- The Module containing the Fantasy Land implementation shall be named _Fantasy Land_
-- The Module containing the Annotation Processor shall be named _Reverie Conceiver_
-- The Module containing the Damas-Hindley-Milner type signatures shall be named _Milner Types_
+- The module containing functional interfaces shall be named _Function_
+- The module containing algebraic data structures shall be named _Algebraic Data Structures_
+- The module containing the Fantasy Land implementation shall be named _Fantasy Land_
+- The module containing the Annotation Processor shall be named _Reverie Conceiver_
+- The module containing the Annotations (require, Required, StrictMode) used by the Annotaion Processor shall be named _Dreamer_
+- [ ] The module containing the Damas-Hindley-Milner type signatures shall be named _Milner Types_
 Dependencies shall be as followed:
-_Milner Types_ <- _Reverie Conceiver_ <= _Fantasy Land_ <= _Algebraic Data Structures_
+- [x] The module _Reverie Conceiver_ is dependent on _Milner Types_
+- [x] The module _Milner Types_ is transitive dependent on _Algebraic Data Structures_
+- [x] The module _Algebraic Data Structures_ is transitive dependent on _Fantasy Land_
+- [x] The module _Fantasy Land_ is transitive dependent on _Dreamer_ **it is not dependent on _Reverie Conceiver_**
+- [x] The module _Dreamer_ is **not** dependent on _Milner Types_ **Strings are used as arguments/type definitions**
+- [x] The module _Function_ is independent of other modules
 
 ## Resources:
   Annotation Processor: [Java Specification](https://docs.oracle.com/en/java/javase/15/docs/api/java.compiler/javax/lang/model/type/package-summary.html)
