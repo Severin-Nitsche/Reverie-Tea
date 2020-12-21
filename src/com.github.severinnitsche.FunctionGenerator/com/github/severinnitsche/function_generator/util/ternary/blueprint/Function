@@ -1,0 +1,8 @@
+package com.github.severinnitsche.function;
+
+@FunctionalInterface
+public interface %s {
+
+  %s apply(%s v1, %s v2, %s v3);
+
+}

@@ -1,0 +1,20 @@
+package com.github.severinnitsche.function;
+
+@FunctionalInterface
+public interface %s {
+
+  boolean test(%s t1, %s t2, %s t3);
+
+  default %s negate() {
+    return (t1,t2,t3) -> !test(t1,t2,t3);
+  }
+
+  default %s or(%s other) {
+    return (t1,t2,t3) -> test(t1,t2,t3) || other.test(t1,t2,t3);
+  }
+
+  default %s and(%s other) {
+    return (t1,t2,t3) -> test(t1,t2,t3) && other.test(t1,t2,t3);
+  }
+
+}

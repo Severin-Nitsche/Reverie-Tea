@@ -56,7 +56,7 @@ Dependencies shall be as followed:
 - [x] The module _Fantasy Land_ is transitive dependent on _Function_
 - [x] The module _Dreamer_ is **not** dependent on _Milner Types_ **Strings are used as arguments/type definitions**
 - [x] The module _Function_ is independent of other modules
-- [x] The module _Function Generator_ is independent of other modules
+- [ ] The module _Function Generator_ is dependent on _java.compiler_
 
 ---
 

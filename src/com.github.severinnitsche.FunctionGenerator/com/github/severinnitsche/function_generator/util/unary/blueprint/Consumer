@@ -1,0 +1,15 @@
+package com.github.severinnitsche.function;
+
+@FunctionalInterface
+public interface %s {
+
+  void accept(%s value);
+
+  default %s andThen(%s after) {
+    return i -> {
+      accept(i);
+      after.accept(i);
+    };
+  }
+
+}
