@@ -50,8 +50,7 @@ public sealed interface CharList permits CharList.Cons, CharList.Nil {
   }
 
   @StrictMode
-  @Product(product = {Object.class,List.class})
-      record Cons(CharList tail, char head) implements CharList {
+  record Cons(CharList tail, char head) implements CharList {
 
     private Cons(char head) {
       this(new Nil(),head);
@@ -84,7 +83,7 @@ public sealed interface CharList permits CharList.Cons, CharList.Nil {
   }
 
   @StrictMode
-      record Nil() implements CharList {
+  record Nil() implements CharList {
 
     @Override
     public <U> List.Nil<U> map(CharFunction<U> mapper) {

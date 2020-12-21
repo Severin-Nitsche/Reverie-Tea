@@ -1,6 +1,6 @@
 package com.github.severinnitsche.fantasyland;
 
-import com.github.severinnitsche.datastructures.function.Function;
+import com.github.severinnitsche.function.Function;
 
 public interface Contravariant<T> {
   <U> Contravariant<U> contramap(Function<U,T> mapper);
