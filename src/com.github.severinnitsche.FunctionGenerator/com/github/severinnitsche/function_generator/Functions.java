@@ -5,7 +5,7 @@ import com.github.severinnitsche.function_generator.util.NameAndType;
 import com.github.severinnitsche.function_generator.util.binary.BinaryNameAndType;
 import com.github.severinnitsche.function_generator.util.ternary.TernaryNameAndType;
 import com.github.severinnitsche.function_generator.util.unary.UnaryNameAndType;
-import com.github.severinnitsche.function_gnerator.util.Types;
+import com.github.severinnitsche.function_generator.util.Types;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
