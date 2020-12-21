@@ -51,6 +51,7 @@ Dependencies shall be as followed:
 - [x] The module _Reverie Conceiver_ is dependent on _Milner Types_
 - [x] The module _Milner Types_ is transitive dependent on _Algebraic Data Structures_
 - [x] The module _Algebraic Data Structures_ is transitive dependent on _Fantasy Land_
+- [x] The module _Algebraic Data Structures_ is transitive dependent on _Function_
 - [x] The module _Fantasy Land_ is transitive dependent on _Dreamer_ **it is not dependent on _Reverie Conceiver_**
 - [x] The module _Dreamer_ is **not** dependent on _Milner Types_ **Strings are used as arguments/type definitions**
 - [x] The module _Function_ is independent of other modules
