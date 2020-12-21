@@ -59,7 +59,6 @@ public sealed interface List<A> extends Functor<A> permits List.Cons, List.Nil {
   }
 
   @StrictMode
-  @Product(product = {Object.class,List.class})
   record Cons<C>(List<C> tail, C head) implements List<C> {
 
     private Cons(C head) {
