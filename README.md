@@ -6,13 +6,13 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
 - [ ] Exhaustive Library containing various functional interfaces types (Tri-/Bi-/Function, etc.)
 - [ ] Comprehensive fp Library containing various algebraic data structures
 - [ ] Complete implementation of the FantasyLand Specification using Interfaces/Annotations
-  - [ ] Setoid
-  - [ ] Ord
-  - [ ] SemiGroup
-  - [ ] Monoid
-  - [ ] Functor
-  - [ ] Contravariant
-  - [ ] Apply
+  - [x] Setoid
+  - [x] Ord
+  - [x] SemiGroup
+  - [x] Monoid
+  - [x] Functor
+  - [x] Contravariant
+  - [x] Apply
   - [ ] Applicative
   - [ ] Alt
   - [ ] Plus

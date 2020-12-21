@@ -2,7 +2,7 @@ package com.github.severinnitsche.dreamer;
 
 import java.lang.annotation.*;
 
-@Target(ElementType.ANNOTATION_TYPE)
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Repeatable(Required.class)
 public @interface require {

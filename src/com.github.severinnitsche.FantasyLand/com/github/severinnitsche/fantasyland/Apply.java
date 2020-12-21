@@ -7,9 +7,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@require(fantasy = "ap :: Apply f => f a ~> f (a -> b) -> f b")
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
+@require(
+  fantasy = "ap :: Apply f => f a ~> f (a -> b) -> f b",
+  superTypes = {Functor.class}
+)
 public @interface Apply {
   //This does not make sense as interface because:
   //ap :: Apply f => f a ~> f (a -> b) -> f b

@@ -4,6 +4,7 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import com.github.severinnitsche.dreamer.require;
 
 /**
  * <p>Fantasy Land Monoid</p>
@@ -11,6 +12,10 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
+@require(
+  fantasy = "empty :: Monoid m => () -> m",
+  annotations = {Semigroup.class}
+)
 public @interface Monoid {
   // This can not be an interface because one can not demand a static method this way
   // empty :: Monoid a => () -> a
