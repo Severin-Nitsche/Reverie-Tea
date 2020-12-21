@@ -58,6 +58,18 @@ Dependencies shall be as followed:
 - [x] The module _Function_ is independent of other modules
 - [x] The module _Function Generator_ is independent of other modules
 
+---
+
+## Build
+To build the project simply use the included Makefile:
+```shell
+make project
+```
+To build the project with annotation processors enabled use:
+```shell
+make annotated
+```
+
 ## Resources:
   Annotation Processor: [Java Specification](https://docs.oracle.com/en/java/javase/15/docs/api/java.compiler/javax/lang/model/type/package-summary.html)
   Fantasy Land: [Fantas, Eel, and Specification](http://www.tomharding.me/fantasy-land/ "by Tom Harding")
