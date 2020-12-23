@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @Alt
 @Target({ElementType.TYPE, ElementType.TYPE_PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@reuire(fantasy = "zero :: Plus f => () -> f a")
+@require(fantasy = "zero :: Plus f => () -> f a")
 public @interface Plus {
 
 }
