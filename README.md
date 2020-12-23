@@ -13,7 +13,7 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
   - [x] Functor
   - [x] Contravariant
   - [x] Apply
-  - [ ] Applicative
+  - [x] Applicative
   - [ ] Alt
   - [ ] Plus
   - [ ] Alternative
