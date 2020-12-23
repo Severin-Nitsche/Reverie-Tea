@@ -9,7 +9,10 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.TYPE, ElementType.TYPE_PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@require(fantasy = "equals :: Setoid a => a ~> a -> Boolean")
-public @interface Setoid {
+@require(
+  fantasy = "alt :: Alt f => f a ~> f a -> f a",
+  superTypes = {Functor.class}
+)
+public @interface Alt {
 
 }

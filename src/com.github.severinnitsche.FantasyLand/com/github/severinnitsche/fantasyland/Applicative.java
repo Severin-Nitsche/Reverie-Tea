@@ -7,12 +7,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Target(ElementType.TYPE)
+@Apply
+@Target({ElementType.TYPE, ElementType.TYPE_PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@require(
-  fantasy = "of :: Applicative f => a -> f a",
-  annotations = {Apply.class}
-)
+@require(fantasy = "of :: Applicative f => a -> f a")
 public @interface Applicative {
 
 }

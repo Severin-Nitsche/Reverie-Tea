@@ -10,7 +10,7 @@ import com.github.severinnitsche.dreamer.require;
  * <p>Fantasy Land Semigroup.</p>
  *
  */
-@Target(ElementType.TYPE)
+@Target({ElementType.TYPE, ElementType.TYPE_PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @require(fantasy = "concat :: SemiGroup a => a ~> a -> a")
 public @interface Semigroup {

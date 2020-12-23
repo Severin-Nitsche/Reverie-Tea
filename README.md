@@ -33,6 +33,7 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
 - [ ] Annotation Processor to verify Code integrity…
   - [ ] …of Meta-Annotations
   - [ ] …annotated Types
+  - [ ] …annotated Type Parameters
 - [ ] Implementation of the Damas-Hindley-Milner type signatures
   - [ ] Lexer
   - [ ] Parser

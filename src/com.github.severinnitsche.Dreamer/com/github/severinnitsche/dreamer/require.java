@@ -8,5 +8,4 @@ import java.lang.annotation.*;
 public @interface require {
   String fantasy();
   Class<?>[] superTypes() default {};
-  Class<? extends java.lang.annotation.Annotation>[] annotations() default {};
 }

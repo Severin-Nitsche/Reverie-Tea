@@ -7,9 +7,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+@Plus
+@Applicative
 @Target({ElementType.TYPE, ElementType.TYPE_PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@require(fantasy = "equals :: Setoid a => a ~> a -> Boolean")
-public @interface Setoid {
+public @interface Alternative {
 
 }
