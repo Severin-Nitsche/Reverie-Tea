@@ -14,10 +14,10 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
   - [x] Contravariant
   - [x] Apply
   - [x] Applicative
-  - [ ] Alt
-  - [ ] Plus
-  - [ ] Alternative
-  - [ ] Foldable
+  - [x] Alt
+  - [x] Plus
+  - [x] Alternative
+  - [x] Foldable
   - [ ] Traversable
   - [ ] Chain
   - [ ] ChainRec
