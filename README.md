@@ -35,8 +35,8 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
   - [ ] …annotated Types
   - [ ] …annotated Type Parameters
 - [ ] Implementation of the Damas-Hindley-Milner type signatures
-  - [ ] Lexer
-  - [ ] Parser
+  - [x] Lexer
+  - [x] Parser
   - [ ] Verifier
 
 ## Module Dependency & Naming
@@ -69,6 +69,11 @@ make project
 To build the project with annotation processors enabled use:
 ```shell
 make annotated
+```
+
+## Run Example / Test
+```shell
+java --enable-preview --module-path out --module com.github.severinnitsche.MilnerTypes/com.github.severinnitsche.milner_types.Example
 ```
 
 ## Resources:

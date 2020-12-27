@@ -37,6 +37,10 @@ public sealed interface AST permits AST.TypeCons, AST.Type, AST.Complex {
     }
   }
 
+  static Either<Throwable, Complex.NamedType> of(String fantasy) {
+    return Lexer.tokenize(fantasy).flatmap(AST::of);
+  }
+
   static Either<Throwable, Complex.NamedType> of(List<Tokenized> tokens) {
     record ACC(Optional<ACC> next, List<Type> types, Optional<Type.Tuple> tuple, Optional<Type> right, Optional<Tokenized> hold,
                List<TypeCons> constraints, Optional<Complex> typedef) {
@@ -135,7 +139,7 @@ public sealed interface AST permits AST.TypeCons, AST.Type, AST.Complex {
 
       Either<Throwable, ACC> insertFunction(Tokenized func) {
         if (next instanceof Cons<ACC> l1)
-          return l1.value().insertFunction(func);
+          return l1.value().insertFunction(func).map(inner -> new ACC(Cons(inner), types, tuple, right, hold, constraints, typedef));
         else if (ACC.this.hold instanceof Nil)
           if(ACC.this.tuple instanceof Cons<Type.Tuple> cons)
             return reduceTypes(types).map(type -> new ACC(next, from(), Nil(), tuple.map(t -> new Type.Tuple(t.types.prepend(type))),Optional(func),constraints,typedef));
