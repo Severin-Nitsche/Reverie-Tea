@@ -24,8 +24,8 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
   - [x] Monad
   - [x] Extend
   - [x] Comonad
-  - [ ] Bifunctor
-  - [ ] Profunctor
+  - [x] Bifunctor
+  - [x] Profunctor
   - [ ] Semigroupoid
   - [ ] Category
 
