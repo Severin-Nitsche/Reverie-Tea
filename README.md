@@ -18,7 +18,7 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
   - [x] Plus
   - [x] Alternative
   - [x] Foldable
-  - [ ] Traversable
+  - [x] Traversable
   - [ ] Chain
   - [ ] ChainRec
   - [ ] Monad
