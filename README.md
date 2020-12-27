@@ -21,7 +21,7 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
   - [x] Traversable
   - [x] Chain
   - [x] ChainRec
-  - [ ] Monad
+  - [x] Monad
   - [ ] Extend
   - [ ] Comonad
   - [ ] Bifunctor
