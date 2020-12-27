@@ -5,7 +5,7 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
 ## Objective:
 - [ ] Exhaustive Library containing various functional interfaces types (Tri-/Bi-/Function, etc.)
 - [ ] Comprehensive fp Library containing various algebraic data structures
-- [ ] Complete implementation of the FantasyLand Specification using Interfaces/Annotations
+- [x] Complete implementation of the FantasyLand Specification using Interfaces/Annotations
   - [x] Setoid
   - [x] Ord
   - [x] SemiGroup
