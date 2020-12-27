@@ -8,8 +8,7 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.TYPE, ElementType.TYPE_PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@Chain
-@require(fantasy = "chainRec :: ChainRec m => ((a -> c, b -> c, a) -> m c, a) -> m b")
-public @interface ChainRec {
+@require(fantasy = "compose :: Semigroupoid c => c i j ~> c j k -> c i k")
+public @interface Semigroupoid {
 
 }

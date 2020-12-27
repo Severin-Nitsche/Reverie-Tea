@@ -6,10 +6,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+@Semigroupoid
 @Target({ElementType.TYPE, ElementType.TYPE_PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@Chain
-@require(fantasy = "chainRec :: ChainRec m => ((a -> c, b -> c, a) -> m c, a) -> m b")
-public @interface ChainRec {
+@require(fantasy = "Category c => () -> c a a")
+public @interface Category {
 
 }

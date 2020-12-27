@@ -26,8 +26,8 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
   - [x] Comonad
   - [x] Bifunctor
   - [x] Profunctor
-  - [ ] Semigroupoid
-  - [ ] Category
+  - [x] Semigroupoid
+  - [x] Category
 
 ## Other Objectives:
 - [ ] Annotation Processor to verify Code integrity…
