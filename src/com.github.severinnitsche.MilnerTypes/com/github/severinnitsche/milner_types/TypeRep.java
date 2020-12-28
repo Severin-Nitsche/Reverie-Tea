@@ -3,8 +3,17 @@ package com.github.severinnitsche.milner_types;
 import com.github.severinnitsche.function.Function;
 import com.github.severinnitsche.algebraic_data_structures.List;
 
-public sealed interface TypeRep permits TypeRep.Algebraic, TypeRep.Func {
-  public sealed interface Algebraic extends TypeRep permits Algebraic.Sum, Algebraic.Product {
+public sealed interface TypeRep permits TypeRep.Algebraic, TypeRep.Func, TypeRep.TypeVariable {
+  public record TypeVariable(String identifier, List<Algebraic> constraints) implements TypeRep {
+
+  }
+  //List = Nil | Cons a
+  //Cons = a + List
+
+  //List = TypeRep.Algebraic.Sum([],[Nil,Cons a])
+  //Nil = TypeRep.Algebraic.Empty([])
+  //Cons = TypeRep.Algebraic.Product([],[a,List])
+  public sealed interface Algebraic extends TypeRep permits Algebraic.Sum, Algebraic.Product, Algebraic.Empty {
     List<Algebraic> directSuperTypes();
 
     private static List<Algebraic> _superTypes(List<Algebraic> types) {
@@ -13,6 +22,9 @@ public sealed interface TypeRep permits TypeRep.Algebraic, TypeRep.Func {
 
     default List<Algebraic> superTypes() {
       return _superTypes(directSuperTypes());
+    }
+    public record Empty(List<Algebraic> directSuperTypes) implements Algebraic {
+
     }
     public record Sum(List<Algebraic> directSuperTypes, List<TypeRep> sum) implements Algebraic {
 
