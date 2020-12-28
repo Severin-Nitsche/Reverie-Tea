@@ -3,20 +3,30 @@ package com.github.severinnitsche.milner_types;
 import com.github.severinnitsche.function.Function;
 import com.github.severinnitsche.algebraic_data_structures.List;
 
-public sealed interface TypeRep permits TypeRep.Sum, TypeRep.Product {
-  List<TypeRep> directSuperTypes();
+public sealed interface TypeRep permits TypeRep.Algebraic, TypeRep.Func {
+  public sealed interface Algebraic extends TypeRep permits Algebraic.Sum, Algebraic.Product {
+    List<Algebraic> directSuperTypes();
 
-  private static List<TypeRep> _superTypes(List<TypeRep> types) {
-    return types.concat(_superTypes(types.chain(TypeRep::directSuperTypes).uniq())).uniq();
+    private static List<Algebraic> _superTypes(List<Algebraic> types) {
+      return types.concat(_superTypes(types.chain(Algebraic::directSuperTypes).uniq())).uniq();
+    }
+
+    default List<Algebraic> superTypes() {
+      return _superTypes(directSuperTypes());
+    }
+    public record Sum(List<Algebraic> directSuperTypes, List<TypeRep> sum) implements Algebraic {
+
+    }
+    public record Product(List<Algebraic> directSuperTypes, List<TypeRep> product) implements Algebraic {
+
+    }
   }
+  public sealed interface Func extends TypeRep permits Func.Function, Func.Method {
+    public record Function(TypeRep in, TypeRep out) implements Func {
 
-  default List<TypeRep> superTypes() {
-    return _superTypes(directSuperTypes());
-  }
-  public record Sum(List<TypeRep> directSuperTypes, List<TypeRep> sum) implements TypeRep {
+    }
+    public record Method(Algebraic in, Function out) implements Func {
 
-  }
-  public record Product(List<TypeRep> directSuperTypes, List<TypeRep> product) implements TypeRep {
-
+    }
   }
 }
