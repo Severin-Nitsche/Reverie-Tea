@@ -3,11 +3,14 @@ package com.github.severinnitsche.algebraic_data_structures;
 import com.github.severinnitsche.function.BiFunction;
 import com.github.severinnitsche.function.Function;
 import com.github.severinnitsche.function.IntFunction;
+import com.github.severinnitsche.function.Predicate;
 import com.github.severinnitsche.fantasyland.*;
 import com.github.severinnitsche.dreamer.*;
 import com.github.severinnitsche.util.Arrays;
+import static com.github.severinnitsche.util.Objects.deepEquals;
 
 @StrictMode
+@Chain
 @Monoid
 @Semigroup
 public sealed interface List<A> extends Functor<A> permits List.Cons, List.Nil {
@@ -18,11 +21,19 @@ public sealed interface List<A> extends Functor<A> permits List.Cons, List.Nil {
   @Override
   <U> List<U> map(Function<A,U> mapper);
 
+  <b> List<b> chain(Function<A,List<b>> mapper);
+
   int size();
 
   <R> R reduceRight(BiFunction<R,A,R> r, R acc);
 
   <R> R reduce(BiFunction<R,A,R> r, R acc);
+
+  default List<A> filter(Predicate<A> p) {
+    return reduceRight((acc, x) -> p.test(x) ? new Cons<A>(acc,x) : acc, (List<A>)new Nil<A>());
+  }
+
+  List<A> uniq();
 
   Either<Throwable,A> elemAt(int i);
 
@@ -32,6 +43,10 @@ public sealed interface List<A> extends Functor<A> permits List.Cons, List.Nil {
 
   default List<A> append(A val) {
     return reduceRight(Cons::new,new Cons<>(val));
+  }
+
+  default boolean contains(A val) {
+    return reduce((r,x) -> deepEquals(x,val) || r,false);
   }
 
   default List<A> prepend(A val) {
@@ -71,6 +86,11 @@ public sealed interface List<A> extends Functor<A> permits List.Cons, List.Nil {
     }
 
     @Override
+    public <b> List<b> chain(Function<C, List<b>> mapper) {
+      return mapper.apply(head).concat(tail.chain(mapper));
+    }
+
+    @Override
     public int size() {
       return 1 + tail.size();
     }
@@ -83,6 +103,13 @@ public sealed interface List<A> extends Functor<A> permits List.Cons, List.Nil {
     @Override
     public <R> R reduce(BiFunction<R, C, R> r, R acc) {
       return tail.reduce(r,r.apply(acc,head));
+    }
+
+    @Override
+    public List<C> uniq() {
+      //return reduceRight((acc, x) -> p.test(x) ? new Cons(x,acc) : acc, new Nil())
+      final var uTail = tail.uniq();
+      return uTail.contains(head) ? uTail : new Cons(uTail,head);
     }
 
     @Override
@@ -100,6 +127,11 @@ public sealed interface List<A> extends Functor<A> permits List.Cons, List.Nil {
     }
 
     @Override
+    public <b> Nil<b> chain(Function<C, List<b>> mapper) {
+      return new Nil<>();
+    }
+
+    @Override
     public int size() {
       return 0;
     }
@@ -112,6 +144,11 @@ public sealed interface List<A> extends Functor<A> permits List.Cons, List.Nil {
     @Override
     public <R> R reduce(BiFunction<R, C, R> r, R acc) {
       return acc;
+    }
+
+    @Override
+    public List<C> uniq() {
+      return new Nil<>();
     }
 
     @Override
