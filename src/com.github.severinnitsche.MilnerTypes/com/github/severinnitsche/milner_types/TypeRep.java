@@ -22,7 +22,7 @@ public sealed interface TypeRep permits TypeRep.Algebraic, TypeRep.Func {
     }
   }
   public sealed interface Func extends TypeRep permits Func.Function, Func.Method {
-    public record Function(TypeRep in, TypeRep out) implements Func {
+    public record Function(List<TypeRep> in, List<TypeRep> out) implements Func {
 
     }
     public record Method(Algebraic in, Function out) implements Func {
