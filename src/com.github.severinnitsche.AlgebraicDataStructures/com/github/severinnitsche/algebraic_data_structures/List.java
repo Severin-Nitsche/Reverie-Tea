@@ -18,6 +18,14 @@ public sealed interface List<A> extends Functor<A> permits List.Cons, List.Nil {
   final class ListIndexOutOfBoundsException extends Throwable {
   }
 
+  static <T> Nil<T> Nil() {
+    return new Nil<>();
+  }
+
+  static <T> Cons<T> Cons(T value) {
+    return new Cons<>(value);
+  }
+
   @Override
   <U> List<U> map(Function<A,U> mapper);
 

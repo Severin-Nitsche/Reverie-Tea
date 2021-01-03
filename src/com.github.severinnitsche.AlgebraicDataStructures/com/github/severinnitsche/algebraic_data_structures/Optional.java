@@ -1,14 +1,15 @@
 package com.github.severinnitsche.algebraic_data_structures;
 
 import com.github.severinnitsche.function.Function;
-import com.github.severinnitsche.fantasyland.Apply;
-import com.github.severinnitsche.fantasyland.Functor;
-import com.github.severinnitsche.fantasyland.Monoid;
+import com.github.severinnitsche.fantasyland.*;
+import com.github.severinnitsche.dreamer.*;
 //import com.github.severinnitsche.function.algebra.structure.Sum;
 
 @Apply
+@Alt
+@StrictMode
 //@Sum(sum = {Optional.Nil.class, Optional.Cons.class})
-public sealed interface Optional<O> extends Functor<O>permits Optional.Nil, Optional.Cons {
+public sealed interface Optional<O> extends Functor<O> permits Optional.Nil, Optional.Cons {
 
   //-------------------------------------------------Constructor
   static <T> Nil<T> Nil() {
@@ -37,6 +38,9 @@ public sealed interface Optional<O> extends Functor<O>permits Optional.Nil, Opti
   //-------------------------------------------------Other
   <U> Optional<U> flatmap(Function<O,Optional<U>> mapper);
 
+  //--------Alt
+  Optional<O> alt(Optional<O> alt);
+
   //-----------------------------------------------Sum
   record Nil<T>() implements Optional<T> {
     @Override
@@ -52,6 +56,11 @@ public sealed interface Optional<O> extends Functor<O>permits Optional.Nil, Opti
     @Override
     public <U> Optional<U> flatmap(Function<T, Optional<U>> mapper) {
       return Nil();
+    }
+
+    @Override
+    public Optional<T> alt(Optional<T> alt) {
+      return alt;
     }
   }
 
@@ -72,6 +81,11 @@ public sealed interface Optional<O> extends Functor<O>permits Optional.Nil, Opti
     @Override
     public <U> Optional<U> flatmap(Function<T, Optional<U>> mapper) {
       return mapper.apply(value);
+    }
+
+    @Override
+    public Optional<T> alt(Optional<T> alt) {
+      return this;
     }
   }
 }
