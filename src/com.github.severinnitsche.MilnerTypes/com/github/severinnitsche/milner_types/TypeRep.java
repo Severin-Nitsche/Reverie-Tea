@@ -2,6 +2,7 @@ package com.github.severinnitsche.milner_types;
 
 import com.github.severinnitsche.function.Function;
 import com.github.severinnitsche.algebraic_data_structures.List;
+import com.github.severinnitsche.algebraic_data_structures.Optional;
 
 public sealed interface TypeRep permits TypeRep.Algebraic, TypeRep.Func, TypeRep.TypeVariable {
   public record TypeVariable(String identifier, List<Algebraic> constraints) implements TypeRep {
@@ -17,21 +18,21 @@ public sealed interface TypeRep permits TypeRep.Algebraic, TypeRep.Func, TypeRep
     default List<Algebraic> superTypes() {
       return _superTypes(directSuperTypes());
     }
-    public record Unit(List<Algebraic> directSuperTypes, List<TypeVariable> typeVariable) implements Algebraic {
+    public record Unit(String name, List<Algebraic> directSuperTypes, List<TypeVariable> typeVariable) implements Algebraic {
 
     }
-    public record Sum(List<Algebraic> directSuperTypes, List<TypeVariable> typeVariable, List<TypeRep> sum) implements Algebraic {
+    public record Sum(String name, List<Algebraic> directSuperTypes, List<TypeVariable> typeVariable, List<TypeRep> sum) implements Algebraic {
 
     }
-    public record Product(List<Algebraic> directSuperTypes, List<TypeVariable> typeVariable, List<TypeRep> product) implements Algebraic {
+    public record Product(String name, List<Algebraic> directSuperTypes, List<TypeVariable> typeVariable, List<TypeRep> product) implements Algebraic {
 
     }
   }
   public sealed interface Func extends TypeRep permits Func.Function, Func.Method {
-    public record Function(List<TypeRep> in, List<TypeRep> out, List<TypeVariable> typeVariable) implements Func {
+    public record Function(Optional<String> name, List<TypeRep> in, List<TypeRep> out, List<TypeVariable> typeVariable) implements Func {
 
     }
-    public record Method(Algebraic in, Function out, List<TypeVariable> typeVariable) implements Func {
+    public record Method(String name, Algebraic in, Function out, List<TypeVariable> typeVariable) implements Func {
 
     }
   }
