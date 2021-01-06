@@ -26,6 +26,10 @@ public sealed interface List<A> extends Functor<A> permits List.Cons, List.Nil {
     return new Cons<>(value);
   }
 
+  static <T> Cons<T> Cons(List<T> tail,T value) {
+    return new Cons<>(tail,value);
+  }
+
   @Override
   <U> List<U> map(Function<A,U> mapper);
 
