@@ -3,3 +3,6 @@ project:
 
 annotated:
 	echo 'Error: not supported yet'
+
+jar:
+	jar -cf Library.jar out
