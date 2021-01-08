@@ -7,15 +7,32 @@ import com.github.severinnitsche.function.Predicate;
 import com.github.severinnitsche.fantasyland.*;
 import com.github.severinnitsche.dreamer.*;
 import com.github.severinnitsche.util.Arrays;
+import java.util.Iterator;
 import static com.github.severinnitsche.util.Objects.deepEquals;
 
 @StrictMode
 @Chain
 @Monoid
 @Semigroup
-public sealed interface List<A> extends Functor<A> permits List.Cons, List.Nil {
+public sealed interface List<A> extends Iterable<A>, Functor<A> permits List.Cons, List.Nil {
 
   final class ListIndexOutOfBoundsException extends Throwable {
+  }
+
+  @Override
+  default Iterator<A> iterator() {
+    return new Iterator<A>() {
+      List<A> list = List.this;
+      public boolean hasNext() {
+        return list instanceof Cons;
+      }
+
+      public A next() {
+        var current = ((Cons<A>)list);
+        list = current.tail();
+        return current.head();
+      }
+    };
   }
 
   static <T> Nil<T> Nil() {
