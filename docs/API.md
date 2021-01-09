@@ -70,17 +70,17 @@ As the name suggests this package contains all sorts of aggregates as well as so
 *Description*: A functional implementation of a LinkedList as Sum-Type implementing various suitable Fantasy Land Types.
 
 | Signature | Description | Laws |
-| --------- | ----------- | ---- |
-| _reduce :: Object r => List a ~> ((r, a) => r, r) -> r_ | reduction ||
-| _reduceRight :: Object r => List a ~> ((r, a) => r, r) -> r_ | reduction but backwards ||
-| _uniq :: List a ~> List a_ | removes all duplicate entries _1_ ||
-| _elemAt :: List a ~> int -> Either Throwable a_ | returns the element at the specified position ||
-| _append :: List a ~> a -> List a_ | returns a list which got the element appended ||
-| _prepend :: List a ~> a -> List a_ | return a list which got the element prepended ||
-| _contains :: List a ~> a -> boolean_ | returns whether a is contained in this list _1_ ||
-| _toArray :: List a ~> (int -> Array a) -> a_ | returns an Array reflecting the elements of this List ||
-| _from :: Array a -> List a_ | returns a List reflecting the elements of the Array ||
-| _from :: java.util.List a -> List a_ | returns a List reflecting the elements of the List ||
+| --------- | ----------- | ---- |
+| _reduce :: Object r => List a ~> ((r, a) => r, r) -> r_ | reduction |
+| _reduceRight :: Object r => List a ~> ((r, a) => r, r) -> r_ | reduction but backwards |
+| _uniq :: List a ~> List a_ | removes all duplicate entries _1_ |
+| _elemAt :: List a ~> int -> Either Throwable a_ | returns the element at the specified position |
+| _append :: List a ~> a -> List a_ | returns a list which got the element appended |
+| _prepend :: List a ~> a -> List a_ | return a list which got the element prepended |
+| _contains :: List a ~> a -> boolean_ | returns whether a is contained in this list _1_ |
+| _toArray :: List a ~> (int -> Array a) -> a_ | returns an Array reflecting the elements of this List |
+| _from :: Array a -> List a_ | returns a List reflecting the elements of the Array |
+| _from :: java.util.List a -> List a_ | returns a List reflecting the elements of the List |
 
 Within the table above there are some methods marked with numbers. Those methods are, while being supported at the current time not well thought out, and raise one or more concerns described in the following table.
 
