@@ -111,15 +111,4 @@ Within the table above there are some methods marked with numbers. Those methods
 
 ## Reverie Conceiver
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300&family=Montserrat&display=swap');
-p,h1,h2,h3,h4,h5,h6,h7 {
-  font-family: 'Montserrat', sans-serif;
-}
-/*td:nth-of-type(1)*/
-td em {
-  font-family: 'Fira Code', monospace;
-  font-style: normal;
-  White-space: nowrap;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="style/style.css" />
