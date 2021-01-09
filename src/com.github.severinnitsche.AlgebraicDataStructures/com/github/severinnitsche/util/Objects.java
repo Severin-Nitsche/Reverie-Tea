@@ -58,7 +58,7 @@ public final class Objects {
     //final var bv = field.get(b);
   }
 
-  private static Either<IllegalAccessException,Boolean> _deepEquals(Object a, Object b, List<Object> noFollow) throws SecurityException  {
+  private static Either<IllegalAccessException,Boolean> _deepEquals(Object a, Object b, List<Object> noFollow)  {
     //try {
     //  System.out.printf("checking fields: %s%n",Arrays.toString(a.getClass().getDeclaredFields()));
     //} catch(Exception ignored) {}

@@ -67,15 +67,15 @@ To build the project simply use the included Makefile:
 make project
 ```
 To build the project with annotation processors enabled use:
-```shell
+```
 make annotated
 ```
 
 ## Run Example / Test
-```shell
+```
 java --enable-preview --module-path out --module com.github.severinnitsche.MilnerTypes/com.github.severinnitsche.milner_types.Example
 ```
 
 ## Resources:
-  Annotation Processor: [Java Specification](https://docs.oracle.com/en/java/javase/15/docs/api/java.compiler/javax/lang/model/type/package-summary.html)
+  Annotation Processor: [Java Specification](https://docs.oracle.com/en/java/javase/15/docs/api/java.compiler/javax/lang/model/type/package-summary.html)\
   Fantasy Land: [Fantas, Eel, and Specification](http://www.tomharding.me/fantasy-land/ "by Tom Harding")

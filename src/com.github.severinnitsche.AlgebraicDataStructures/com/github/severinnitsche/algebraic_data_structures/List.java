@@ -13,7 +13,6 @@ import static com.github.severinnitsche.util.Objects.deepEquals;
 @StrictMode
 @Chain
 @Monoid
-@Semigroup
 public sealed interface List<A> extends Iterable<A>, Functor<A> permits List.Cons, List.Nil {
 
   final class ListIndexOutOfBoundsException extends Throwable {
