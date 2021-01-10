@@ -12,6 +12,15 @@ All *package* names are marked in `this way` and are prefixed with `com.github.s
 | *symmetry*     | *__∀ A,B ∈ X : ((A,B) ∈ R <=> (B,C) ∈ R)__* |
 | *reflexivity*  | *__∀ A ∈ X : (A,A) ∈ R__* |
 
+### Concerns
+
+Within the following tables, describing operations of the different algebras, there are some methods marked with numbers. Those methods are, while being supported at the current time not well thought out, and raise one or more concerns described in the following table.
+
+| ID | Concern | Proposed Change |
+| -- | ------- | --------------- |
+| 1 | The problem here is that the method relies on some notion of equivalence, and though technically speaking every non-primitive Type in Java conforms to the [Setoid](http://www.tomharding.me/2017/03/09/fantas-eel-and-specification-3/) Specification, we decided to explicitly declare _Setoid_ Types with an annotation. However, since many implementations do not require their members to be _Setoid_ or contain completely unbound Types, we, even though there is an accessible _equals_ method that per [Definition](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)) conforms to the Fantasy Land specification, did not explicitly defined it as a Setoid meaning that we probably didn't include the equals method by will but by the force of Javas narrow headed type system. | Methods like this may be factored out into static functions that respect the _@Setoid_ requirement of _a_. |
+| 2 | Operations marked with this ID may potentially be realized by an algebraic structure of the [fantasy-land specification](https://github.com/fantasyland/fantasy-land), though possibly under a different name (ie. *__flatmap === chain__*). | Use the correct Structure |
+
 ### Code Conventions
 #### Code Style
 N/A
@@ -81,14 +90,8 @@ As the name suggests this package contains all sorts of aggregates as well as so
 | *__prepend :: List a ~> a -> List a__* | return a list which got the element prepended |
 | *__contains :: List a ~> a -> boolean__* | returns whether a is contained in this list _1_ |
 | *__toArray :: List a ~> (int -> Array a) -> a__* | returns an Array reflecting the elements of this List |
-| *__from :: Array a -> List a__* | returns a List reflecting the elements of the Array |
-| *__from :: java.util.List a -> List a__* | returns a List reflecting the elements of the List |
-
-Within the table above there are some methods marked with numbers. Those methods are, while being supported at the current time not well thought out, and raise one or more concerns described in the following table.
-
-| ID | Concern | Proposed Change |
-| -- | ------- | --------------- |
-| 1  | The problem here is that the method relies on some notion of equivalence, and though technically speaking every non-primitive Type in Java conforms to the [Setoid](http://www.tomharding.me/2017/03/09/fantas-eel-and-specification-3/) Specification, we decided to explicitly declare _Setoid_ Types with an annotation. However, since the _a_ in _List a_ as used in the type signatures above is an unbound type, we, even though there is an accessible _equals_ method that per [Definition](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)) conforms to the Fantasy Land specification, did not explicitly defined it as a Setoid meaning that we probably didn't include the equals method by will but by the force of Javas narrow headed type system. | Methods like this may be factored out into static functions that respect the _@Setoid_ requirement of _a_. |
+| *__from :: Array a -> List a__* | returns a List reflecting the elements of the Array _2_ |
+| *__from :: java.util.List a -> List a__* | returns a List reflecting the elements of the List _2_ |
 
 ### Optional
 *Package*: `algebraic_data_types`\
@@ -104,6 +107,11 @@ Within the table above there are some methods marked with numbers. Those methods
 *Algebraic Structures*: **fantasyland.Chain**
 
 *Description*: Wrapper for Data-Types of values that may be absent when an error condition is met.
+
+| Signature | Description | Laws |
+| --------- | ----------- | ---- |
+| *__from :: Throwable l => r -> Either l r__* | This function serves as a constructor accepting a value |
+| *__from :: Throwable l => l -> Either l r__* | This function serves as a constructor accepting an error / exception |
 
 ## Dreamer
 
