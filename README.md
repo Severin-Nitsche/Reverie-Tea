@@ -4,7 +4,7 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
 
 ## Objective:
 - [ ] Exhaustive Library containing various functional interfaces types (Tri-/Bi-/Function, etc.)
-- [ ] Comprehensive fp Library containing various algebraic data structures
+- [ ] Comprehensive fp Library containing various algebraic data types
 - [x] Complete implementation of the FantasyLand Specification using Interfaces/Annotations
   - [x] Setoid
   - [x] Ord
@@ -42,7 +42,7 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
 ## Module Dependency & Naming
 - The module containing functional interfaces shall be named _Function_
 - The module containing the generator of the functional interfaces shall be named _Function Generator_
-- The module containing algebraic data structures shall be named _Algebraic Data Structures_
+- The module containing algebraic data types shall be named _Algebraic Data Types_
 - The module containing the Fantasy Land implementation shall be named _Fantasy Land_
 - The module containing the Annotation Processor shall be named _Reverie Conceiver_
 - The module containing the Annotations (require, Required, StrictMode) used by the Annotaion Processor shall be named _Dreamer_
@@ -50,8 +50,8 @@ This project aims to order the mess of the Data-Structures-Project of mine, and 
 
 Dependencies shall be as followed:
 - [x] The module _Reverie Conceiver_ is dependent on _Milner Types_
-- [x] The module _Milner Types_ is transitive dependent on _Algebraic Data Structures_
-- [x] The module _Algebraic Data Structures_ is transitive dependent on _Fantasy Land_
+- [x] The module _Milner Types_ is transitive dependent on _Algebraic Data Types_
+- [x] The module _Algebraic Data Types_ is transitive dependent on _Fantasy Land_
 - [x] ~~The module _Algebraic Data Structures_ is transitive dependent on _Function_~~
 - [x] The module _Fantasy Land_ is transitive dependent on _Dreamer_ **it is not dependent on _Reverie Conceiver_**
 - [x] The module _Fantasy Land_ is transitive dependent on _Function_

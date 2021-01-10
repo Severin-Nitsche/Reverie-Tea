@@ -6,7 +6,7 @@ annotated:
 
 jar: project
 	mkdir -p out/artifacts
-	jar -cf out/artifacts/AlgebraicDataStructures.jar -C out/production/com.github.severinnitsche.AlgebraicDataStructures .
+	jar -cf out/artifacts/AlgebraicDataTypes.jar -C out/production/com.github.severinnitsche.AlgebraicDataTypes .
 	jar -cf out/artifacts/Dreamer.jar -C out/production/com.github.severinnitsche.Dreamer .
 	jar -cf out/artifacts/fantasyland.jar -C out/production/com.github.severinnitsche.fantasyland .
 	jar -cf out/artifacts/Function.jar -C out/production/com.github.severinnitsche.Function .

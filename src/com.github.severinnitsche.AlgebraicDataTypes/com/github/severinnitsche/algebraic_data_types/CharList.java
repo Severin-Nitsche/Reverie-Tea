@@ -1,4 +1,4 @@
-package com.github.severinnitsche.algebraic_data_structures;
+package com.github.severinnitsche.algebraic_data_types;
 
 import com.github.severinnitsche.function.*;
 import com.github.severinnitsche.fantasyland.*;

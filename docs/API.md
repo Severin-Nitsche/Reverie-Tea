@@ -25,6 +25,7 @@ As the name suggests this package contains all sorts of aggregates as well as so
 - *Functions*
 - *Objects*
 - *Strings*
+
 `algebraic_data_structures`
 - *List*
 - *Optional* (may be renamed to *Maybe*)

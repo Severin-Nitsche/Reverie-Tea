@@ -1,8 +1,8 @@
 package com.github.severinnitsche.milner_types;
 
-import com.github.severinnitsche.algebraic_data_structures.Either;
+import com.github.severinnitsche.algebraic_data_types.Either;
 
-import static com.github.severinnitsche.algebraic_data_structures.Either.from;
+import static com.github.severinnitsche.algebraic_data_types.Either.from;
 
 public sealed interface Tokenized permits Tokenized.Literal, Tokenized.Colon, Tokenized.Comma, Tokenized.Arrow, Tokenized.Method, Tokenized.Function, Tokenized.LeftBracket, Tokenized.RightBracket {
 

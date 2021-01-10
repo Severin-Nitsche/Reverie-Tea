@@ -1,6 +1,6 @@
 package com.github.severinnitsche.milner_types;
 
-import com.github.severinnitsche.algebraic_data_structures.*;
+import com.github.severinnitsche.algebraic_data_types.*;
 import com.github.severinnitsche.util.*;
 
 class Lexer {

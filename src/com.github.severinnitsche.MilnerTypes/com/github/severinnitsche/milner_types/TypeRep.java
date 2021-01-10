@@ -1,8 +1,8 @@
 package com.github.severinnitsche.milner_types;
 
 import com.github.severinnitsche.function.Function;
-import com.github.severinnitsche.algebraic_data_structures.List;
-import com.github.severinnitsche.algebraic_data_structures.Map;
+import com.github.severinnitsche.algebraic_data_types.List;
+import com.github.severinnitsche.algebraic_data_types.Map;
 
 public sealed interface TypeRep permits TypeRep.Algebraic, TypeRep.Func, TypeRep.TypeVariable {
   public record TypeVariable(String identifier, List<Algebraic> constraints) implements TypeRep {

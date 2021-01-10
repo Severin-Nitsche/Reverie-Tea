@@ -1,7 +1,7 @@
 package com.github.severinnitsche.util;
 
-import com.github.severinnitsche.algebraic_data_structures.List;
-import com.github.severinnitsche.algebraic_data_structures.Either;
+import com.github.severinnitsche.algebraic_data_types.List;
+import com.github.severinnitsche.algebraic_data_types.Either;
 
 import com.github.severinnitsche.function.Function;
 import com.github.severinnitsche.function.CheckedFunction;

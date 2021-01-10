@@ -1,10 +1,10 @@
 package com.github.severinnitsche.milner_types;
 
 //import com.github.severinnitsche.function.algebra.structure.Sum;
-import com.github.severinnitsche.algebraic_data_structures.*;
+import com.github.severinnitsche.algebraic_data_types.*;
 
-import static com.github.severinnitsche.algebraic_data_structures.List.from;
-import static com.github.severinnitsche.algebraic_data_structures.Optional.*;
+import static com.github.severinnitsche.algebraic_data_types.List.from;
+import static com.github.severinnitsche.algebraic_data_types.Optional.*;
 
 //@Sum(sum = {AST.TypeCons, AST.Type, AST.Complex})
 public sealed interface AST permits AST.TypeCons, AST.Type, AST.Complex {

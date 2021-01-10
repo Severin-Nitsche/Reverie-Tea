@@ -1,7 +1,7 @@
 package com.github.severinnitsche.util;
 
 import com.github.severinnitsche.function.BiFunction;
-import com.github.severinnitsche.algebraic_data_structures.List;
+import com.github.severinnitsche.algebraic_data_types.List;
 
 public interface Functions {
   static <A> A identity(A a) {
