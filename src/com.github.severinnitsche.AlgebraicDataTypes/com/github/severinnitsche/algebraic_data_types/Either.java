@@ -1,17 +1,16 @@
 package com.github.severinnitsche.algebraic_data_types;
 
 import com.github.severinnitsche.function.Function;
-import com.github.severinnitsche.fantasyland.Apply;
-import com.github.severinnitsche.fantasyland.Functor;
+import com.github.severinnitsche.fantasyland.*;
 import com.github.severinnitsche.dreamer.StrictMode;
 
 @StrictMode
-@Apply
+@Chain
 public sealed interface Either<L extends Throwable, R> extends Functor<R> permits Either.Left, Either.Right {
   @Override
   <U> Either<L,U> map(Function<R, U> mapper);
 
-  <U> Either<L,U> flatmap(Function<R,Either<L,U>> mapper);
+  <U> Either<L,U> chain(Function<R,Either<L,U>> mapper);
 
   @SuppressWarnings("unchecked")
   default <B> Either<L,B> ap(Either<L,Function<R,B>> mapper) {
@@ -35,7 +34,7 @@ public sealed interface Either<L extends Throwable, R> extends Functor<R> permit
     }
 
     @Override
-    public <U> Either<L, U> flatmap(Function<R, Either<L, U>> mapper) {
+    public <U> Either<L, U> chain(Function<R, Either<L, U>> mapper) {
       return Either.from(throwable);
     }
   }
@@ -47,7 +46,7 @@ public sealed interface Either<L extends Throwable, R> extends Functor<R> permit
     }
 
     @Override
-    public <U> Either<L, U> flatmap(Function<R, Either<L, U>> mapper) {
+    public <U> Either<L, U> chain(Function<R, Either<L, U>> mapper) {
       Right<L,Either<L,U>> mapped = map(mapper);
       if(mapped.value instanceof Right<L,U> right) return from(right.value);
       else return from(((Left<L,U>)mapped.value).throwable);

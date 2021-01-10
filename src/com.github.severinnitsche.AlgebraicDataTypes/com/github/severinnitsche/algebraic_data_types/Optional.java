@@ -7,6 +7,7 @@ import com.github.severinnitsche.dreamer.*;
 
 @Apply
 @Alt
+@Chain
 @StrictMode
 //@Sum(sum = {Optional.Nil.class, Optional.Cons.class})
 public sealed interface Optional<O> extends Functor<O> permits Optional.Nil, Optional.Cons {
@@ -36,7 +37,7 @@ public sealed interface Optional<O> extends Functor<O> permits Optional.Nil, Opt
   <U> Optional<U> ap(Optional<Function<O, U>> mapper);
 
   //-------------------------------------------------Other
-  <U> Optional<U> flatmap(Function<O,Optional<U>> mapper);
+  <U> Optional<U> chain(Function<O,Optional<U>> mapper);
 
   //--------Alt
   Optional<O> alt(Optional<O> alt);
@@ -54,7 +55,7 @@ public sealed interface Optional<O> extends Functor<O> permits Optional.Nil, Opt
     }
 
     @Override
-    public <U> Optional<U> flatmap(Function<T, Optional<U>> mapper) {
+    public <U> Optional<U> chain(Function<T, Optional<U>> mapper) {
       return Nil();
     }
 
@@ -79,7 +80,7 @@ public sealed interface Optional<O> extends Functor<O> permits Optional.Nil, Opt
     }
 
     @Override
-    public <U> Optional<U> flatmap(Function<T, Optional<U>> mapper) {
+    public <U> Optional<U> chain(Function<T, Optional<U>> mapper) {
       return mapper.apply(value);
     }
 

@@ -26,7 +26,7 @@ public record CharAccumulator<O>(CharList buffer, List<O>accumulated, Function<C
   public Either<Throwable, CharAccumulator<O>> accumulate(char in) {
     if (acceptor.test(buffer, in))
       if (before.test(buffer, in) && after.test(buffer, in))
-        return reduce().map(accumulator -> accumulator.push(in)).flatmap(CharAccumulator::reduce);
+        return reduce().map(accumulator -> accumulator.push(in)).chain(CharAccumulator::reduce);
       else if (before.test(buffer, in))
         return reduce().map(accumulator -> accumulator.push(in));
       else if (after.test(buffer, in))

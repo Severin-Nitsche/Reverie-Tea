@@ -64,7 +64,7 @@ public final class Objects {
     //} catch(Exception ignored) {}
     return Arrays.reduce(
       a.getClass().getDeclaredFields(),
-      (result,field) -> result.flatmap(v1 -> wrap(verifyCurried(field).apply(a).apply(b)).apply(noFollow).map(v2 -> v1 && v2)),
+      (result,field) -> result.chain(v1 -> wrap(verifyCurried(field).apply(a).apply(b)).apply(noFollow).map(v2 -> v1 && v2)),
       Either.<IllegalAccessException,Boolean>from(true)
     );
   }

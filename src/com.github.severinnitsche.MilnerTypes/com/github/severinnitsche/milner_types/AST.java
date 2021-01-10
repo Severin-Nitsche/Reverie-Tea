@@ -38,7 +38,7 @@ public sealed interface AST permits AST.TypeCons, AST.Type, AST.Complex {
   }
 
   static Either<Throwable, Complex.NamedType> of(String fantasy) {
-    return Lexer.tokenize(fantasy).flatmap(AST::of);
+    return Lexer.tokenize(fantasy).chain(AST::of);
   }
 
   static Either<Throwable, Complex.NamedType> of(List<Tokenized> tokens) {
@@ -79,7 +79,7 @@ public sealed interface AST permits AST.TypeCons, AST.Type, AST.Complex {
       Either<Throwable, Type> reduceSimple() {//TODO: add tuple support
         if (next instanceof Nil)
           if (ACC.this.hold instanceof Cons<Tokenized> held)
-            return reduceTypes(ACC.this.types).flatmap(left -> {
+            return reduceTypes(ACC.this.types).chain(left -> {
               if (ACC.this.right instanceof Cons<Type> cons)
                 if (held.value() instanceof Tokenized.Method)
                   if (cons.value() instanceof Type.Function func)
@@ -115,7 +115,7 @@ public sealed interface AST permits AST.TypeCons, AST.Type, AST.Complex {
       }
 
       Either<Throwable, Type> reduceFunction() {
-        return reduceTypes(ACC.this.types).flatmap(left -> {
+        return reduceTypes(ACC.this.types).chain(left -> {
           if (ACC.this.next instanceof Nil)
             if (ACC.this.right instanceof Cons<Type> to)
               if (this.hold instanceof Cons<Tokenized> held)
@@ -161,7 +161,7 @@ public sealed interface AST permits AST.TypeCons, AST.Type, AST.Complex {
             if (ACC.this.right instanceof Cons<Type> cons)
               if (cons.value() instanceof Type.Function || cons.value() instanceof Type.Method)
                 if (ACC.this.next instanceof Nil)
-                  return ACC.this.types.elemAt(0).flatmap(type -> ACC.this.types.elemAt(1).map(
+                  return ACC.this.types.elemAt(0).chain(type -> ACC.this.types.elemAt(1).map(
                       base -> new ACC(Nil(), from(), Nil(), ACC.this.right, ACC.this.hold,
                           ACC.this.constraints.prepend(new TypeCons(base, type)), ACC.this.typedef)
                   ));
@@ -191,7 +191,7 @@ public sealed interface AST permits AST.TypeCons, AST.Type, AST.Complex {
 
       Either<Throwable, ACC> reduceConstraints(Tokenized.Colon colon) {
         if (ACC.this.hold instanceof Cons<Tokenized> cons && cons.value() instanceof Tokenized.Arrow)
-          return addConstraint().flatmap(ac -> ac._reduceConstraints(colon));
+          return addConstraint().chain(ac -> ac._reduceConstraints(colon));
         else
           return _reduceConstraints(colon);
       }
@@ -215,7 +215,7 @@ public sealed interface AST permits AST.TypeCons, AST.Type, AST.Complex {
     }
 
     return tokens.reduceRight(
-        (either, token) -> either.flatmap(acc -> {
+        (either, token) -> either.chain(acc -> {
           if (token instanceof Tokenized.Literal literal)
             return Either.from(acc.insertLiteral(literal));
           else if (token instanceof Tokenized.RightBracket)
@@ -235,7 +235,7 @@ public sealed interface AST permits AST.TypeCons, AST.Type, AST.Complex {
             return Either.from(new Throwable("not implemented yet"));
         }),
         Either.from(new ACC(Nil(), from(), Nil(), Nil(), Nil(), from(), Nil()))
-    ).flatmap(acc -> {
+    ).chain(acc -> {
       if (acc.typedef instanceof Cons<Complex> cons && cons.value() instanceof Complex.NamedType type)
         return Either.from(type);
       else

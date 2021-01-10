@@ -21,10 +21,10 @@ public record NestedAccumulator<I, O>(List<I> buffer, Optional<NestedAccumulator
   }
 
   public static <I, O> BiFunction<Either<Throwable, NestedAccumulator<I, O>>, I, Either<Throwable, NestedAccumulator<I, O>>> accumulate(BiPredicate<NestedAccumulator<I, O>, I> accept, Predicate<I> compactBefore, Predicate<I> compactOn, Predicate<I> compactAfter, Function<NestedAccumulator<I, O>, Either<Throwable, NestedAccumulator<I, O>>> compact) {
-    return (either, input) -> either.flatmap(accumulator -> {
+    return (either, input) -> either.chain(accumulator -> {
       if (accept.test(accumulator, input))
         if (compactBefore.test(input) && compactAfter.test(input))
-          return compact.apply(accumulator).map(acc -> acc.append(input)).flatmap(compact);
+          return compact.apply(accumulator).map(acc -> acc.append(input)).chain(compact);
         else if (compactBefore.test(input))
           return compact.apply(accumulator).map(acc -> acc.append(input));
         else if (compactAfter.test(input))

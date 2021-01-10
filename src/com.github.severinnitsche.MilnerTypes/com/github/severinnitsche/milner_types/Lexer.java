@@ -7,7 +7,7 @@ class Lexer {
   static Either<Throwable, List<Tokenized>> tokenize(String s) {
     return Strings.
         reduce(s,
-            (either, c) -> either.flatmap(
+            (either, c) -> either.chain(
                 accumulator -> accumulator.accumulate(c)
             ),
             Either.from(new CharAccumulator<>(
@@ -24,7 +24,7 @@ class Lexer {
                     (c == ':' && list instanceof CharList.Cons cons && cons.head() == ':')
             ))
         ).
-        flatmap(CharAccumulator::reduce).
+        chain(CharAccumulator::reduce).
         map(CharAccumulator::accumulated);
   }
 }
