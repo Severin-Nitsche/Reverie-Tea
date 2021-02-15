@@ -114,6 +114,22 @@ As the name suggests this package contains all sorts of aggregates as well as so
 | *__from :: Throwable l => l -> Either l r__* | This function serves as a constructor accepting an error / exception |
 
 ## Dreamer
+This module contains annotations used to declare the usage of advanced type checking facilities provided by _[Reverie Conceiver](#reverie-conceiver)_.
+
+### require
+*Package*: `dreamer`\
+*Simple Name*: **require**\
+*Type Signature*: *__TypeDef__* \
+
+*Description*: Type Annotation used to specify constraints on a class. May be used to specify constraints on an annotation that then, if strict-mode is enabled, enforces set constraints on annotated classes (even if the constraint may not be type checkable by Javas default Type System).
+
+| Signature | Description | Laws |
+| --------- | ----------- | ---- |
+| *__fantasy :: require r => r ~> () -> String__* | The constraints | Must be in Hindley-Milner-notation |
+| *__superTypes :: require r => r ~> () -> [Class<?>]__* | Super Types |
+
+### Required
+### StrictMode
 
 ## FantasyLand
 
