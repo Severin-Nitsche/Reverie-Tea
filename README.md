@@ -73,7 +73,7 @@ make annotated
 
 ## Run Example / Test
 ```
-java --enable-preview --module-path out/production --module com.github.severinnitsche.MilnerTypes/com.github.severinnitsche.milner_types.Example
+make test > /dev/null
 ```
 
 ## Resources:
