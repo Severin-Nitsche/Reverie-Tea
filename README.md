@@ -63,7 +63,7 @@ Dependencies shall be as followed:
 
 ## Build
 To build the project simply use the included Makefile:
-```shell
+```
 make project
 ```
 To build the project with annotation processors enabled use:
@@ -73,7 +73,7 @@ make annotated
 
 ## Run Example / Test
 ```
-java --enable-preview --module-path out --module com.github.severinnitsche.MilnerTypes/com.github.severinnitsche.milner_types.Example
+java --enable-preview --module-path out/production --module com.github.severinnitsche.MilnerTypes/com.github.severinnitsche.milner_types.Example
 ```
 
 ## Resources:
